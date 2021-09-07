@@ -21,4 +21,16 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     $router->post('authors', ['uses' => 'AuthorController@create']);
     $router->delete('authors/{id}', ['uses' => 'AuthorController@delete']);
     $router->put('authors/{id}', ['uses' => 'AuthorController@update']);
-  });
+});
+
+
+$router->group(['prefix' => 'getapi'], function ($api_names) use ($router) {
+    // table name -> api name
+    $api_names = [
+        'authors' => 'abc'
+    ];
+    foreach ($api_names as $table => $api) {
+        $router->get($api, ['uses' => 'AuthorController@showAllAuthors']);
+        $router->get($api.'/{id}', ['uses' => 'AuthorController@showOneAuthor']);
+    }
+});
