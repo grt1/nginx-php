@@ -27,3 +27,7 @@ $router->group(['prefix' => 'dev'], function ($router) {
     $router->get('fromdb/{table}', ['uses' => 'FromdbController@getAll']);
     $router->get('fromdb/{table}/{id}', ['uses' => 'FromdbController@getOne']);
 });
+
+$router->get('/key', function() {
+    return \Illuminate\Support\Str::random(32);
+});
