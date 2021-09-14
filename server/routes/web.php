@@ -21,6 +21,12 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     $router->post('authors', ['uses' => 'AuthorController@create']);
     $router->delete('authors/{id}', ['uses' => 'AuthorController@delete']);
     $router->put('authors/{id}', ['uses' => 'AuthorController@update']);
+    // MstDistributionProcessing
+    $router->get('mstDistributionProcessing', ['uses' => 'MstDistributionProcessingController@getAll']);
+    $router->get('mstDistributionProcessing/{id}', ['uses' => 'MstDistributionProcessingController@getOne']);
+    $router->post('mstDistributionProcessing', ['uses' => 'MstDistributionProcessingController@create']);
+    $router->delete('mstDistributionProcessing/{id}', ['uses' => 'MstDistributionProcessingController@delete']);
+    $router->put('mstDistributionProcessing/{id}', ['uses' => 'MstDistributionProcessingController@update']);
 });
 
 $router->group(['prefix' => 'dev'], function ($router) {

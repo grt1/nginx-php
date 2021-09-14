@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Author extends Model
+class MstDistributionProcessing extends Model
 {
     /**
      * The attributes that are mass assignable.
@@ -12,7 +12,7 @@ class Author extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'github', 'twitter', 'location', 'latest_article_published'
+        'process_div', 'code', 'distribution_item', 'dist_status', 'created_by', 'updated_by'
     ];
 
     /**
