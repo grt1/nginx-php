@@ -21,24 +21,24 @@ class MstDistributionProcessingController extends Controller
             'process_div' => 'required|integer|max:3',
             'code' => 'required|integer',
             'distribution_item' => 'required',
-            'dist_status' => 'required|integer|size:1',
+            'dist_status' => 'required|integer|min:0|max:1',
             'created_by' => 'required'
         ]);
-        $author = Author::create($request->all());
-        return response()->json($author, 201);
+        $db = MstDistributionProcessing::create($request->all());
+        return response()->json($db, 201);
     }
 
     public function update($id, Request $request) {
         $this->validate($request, [
-            'dist_status' => 'required|integer|size:1'
+            'dist_status' => 'required|integer|min:0|max:1'
         ]);
-        $author = Author::findOrFail($id);
-        $author->update(['dist_status' => $request->dist_status]);
-        return response()->json($author, 200);
+        $db = MstDistributionProcessing::findOrFail($id);
+        $db->update(['dist_status' => $request->dist_status]);
+        return response()->json($db, 200);
     }
 
     public function delete($id) {
-        Author::findOrFail($id)->delete();
+        MstDistributionProcessing::findOrFail($id)->delete();
         return response('Deleted Successfully', 200);
     }
 }
